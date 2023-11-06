@@ -37,9 +37,31 @@ test02,10.1.1.2,,1.1.1.103,,10.176.3.57,
 
 Once the above is complete , run hostRegist.py
 
+# Others
+If you want to confilm template id and group id,
+run below script
 
-
-
+```py:
+zabbix = pyzabbix.ZabbixAPI("ZabbixURL")
+zabbix.login("Zabbix Web console user","Zabbix Web console password")
+template = zabbix.template.get(
+    output=["host","templateid"],
+    filter={
+	 # Template name you want to confilm
+        "host":["Template name"]
+    }
+)
+group= zabbix.hostgroup.get(
+    output=["groupid","name"],
+    filter={
+	# HostGroup name you want to confilm
+        "name":["HostGroup"]
+    }
+)
+# Display template and hostgroup info
+print(template[0])
+print(group[0])
+```
 
 
 
