@@ -1,11 +1,15 @@
 import pyzabbix
 import pandas
 
-# Initialization
+# Initialization.
+# Set Zabbix URL,user,password
 url = "http://192.168.3.19/zabbix"
 user = "Admin"
 password = "zabbix"
+# Set csv file path
 csvPath = "./zabbixHostinfo.csv"
+# Set template id and hostgroup id
+# In order to confim template id and hostgroup id , execute SQL or zabbix api
 templateid=10577
 groupid=21
 
@@ -45,35 +49,35 @@ def main():
             interfaces.append(createInterface(row["IP1"],1))
             mainParam=0
         # If "IP2" item isn't nan and [interfaces] isn't empty, 
-        # add the interface infomatin to the [interfaces] list and assign 0 to [mainParam]
+        # add the interface infomatin to the [interfaces] list and assign 1 to [mainParam]
         if(pandas.notna(row["IP2"])):
             if(interfaces == []):
                 mainParam=1
             interfaces.append(createInterface(row["IP2"],mainParam))
             mainParam=0
         # If "IP3" item isn't nan and [interfaces] isn't empty, 
-        # add the interface infomatin to the [interfaces] list and assign 0 to [mainParam]
+        # add the interface infomatin to the [interfaces] list and assign 1 to [mainParam]
         if(pandas.notna(row["IP3"])):
             if(interfaces == []):
                 mainParam=1
             interfaces.append(createInterface(row["IP3"],mainParam))
             mainParam=0
         # If "IP4" item isn't nan and [interfaces] isn't empty, 
-        # add the interface infomatin to the [interfaces] list and assign 0 to [mainParam]
+        # add the interface infomatin to the [interfaces] list and assign 1 to [mainParam]
         if(pandas.notna(row["IP4"])):
             if(interfaces == []):
                 mainParam=1
             interfaces.append(createInterface(row["IP4"],mainParam))
             mainParam=0
         # If "IP5" item isn't nan and [interfaces] isn't empty, 
-        # add the interface infomatin to the [interfaces] list and assign 0 to [mainParam]
+        # add the interface infomatin to the [interfaces] list and assign 1 to [mainParam]
         if(pandas.notna(row["IP5"])):
             if(interfaces == []):
                 mainParam=1
             interfaces.append(createInterface(row["IP5"],mainParam))
             mainParam=0
         #If "IP6" item isn't nan and [interfaces] isn't empty, 
-        # add the interface infomatin to the [interfaces] list and assign 0 to [mainParam]
+        # add the interface infomatin to the [interfaces] list and assign 1 to [mainParam]
         if(pandas.notna(row["IP6"])):
             if(interfaces == []):
                 mainParam=1
